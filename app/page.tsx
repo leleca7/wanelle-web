@@ -76,7 +76,7 @@ export default function Home() {
       neon.from('inventory_items').select('id,name,unit,current_quantity,minimum_quantity').order('name', { ascending: true }),
       neon.from('financial_entries').select('id,entry_type,amount,entry_date').order('entry_date', { ascending: false }),
     ]);
-    if (!o.error) setOrders((o.data ?? []) as Order[]);
+    if (!o.error) setOrders((o.data ?? []) as unknown as Order[]);
     if (!s.error) setStock((s.data ?? []) as Stock[]);
     if (!f.error) setEntries((f.data ?? []) as Entry[]);
   }
